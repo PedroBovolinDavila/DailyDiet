@@ -1,10 +1,10 @@
-import { Text } from "react-native";
+import { Header } from "../components/Header";
 import { HomeContainer } from "../styles/screens/homeStyles";
 
 export function Home() { 
   return (
     <HomeContainer>
-      <Text>Ola</Text>
+      <Header />
     </HomeContainer>
   )
 }

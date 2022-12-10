@@ -1,4 +1,5 @@
 import { ActivityIndicator, View } from "react-native";
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 
 import { useFonts } from "expo-font";
 import { NunitoSans_400Regular, NunitoSans_700Bold } from '@expo-google-fonts/nunito-sans'
@@ -24,7 +25,11 @@ export default function App() {
 
   return (
     <ThemeProvider theme={THEME}>
-      <Home />
+      <SafeAreaProvider>
+        <SafeAreaView>
+          <Home />
+        </SafeAreaView>
+      </SafeAreaProvider>
     </ThemeProvider>
   )
 }
