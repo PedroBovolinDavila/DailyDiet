@@ -1,0 +1,30 @@
+export default {
+  colors: {
+    red700: '#BF3B44',
+    red500: '#F3BABD',
+    red300: '#F4E6E7',
+    green700: '#639339',
+    green500: '#CBE4B4',
+    green300: '#E5F0DB',
+    gray700: '#1B1D1E',
+    gray600: '#333638',
+    gray500: '#5C6265',
+    gray400: '#B9BBBC',
+    gray300: '#DDDEDF',
+    gray200: '#EFF0F0',
+    gray100: '#FAFAFA',
+    white: '#FFFFFF',
+  },
+  fonts: {
+    regular: 'NunitoSans_400Regular',
+    bold: 'NunitoSans_700Bold',
+  },
+  sizes: {
+    sm: '12px',
+    md: '14px',
+    lg: '16px',
+    xl: '18px',
+    '2xl': '24px',
+    '3xl': '32px',
+  },
+}
