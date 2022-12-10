@@ -4,9 +4,9 @@ import { useFonts } from "expo-font";
 import { NunitoSans_400Regular, NunitoSans_700Bold } from '@expo-google-fonts/nunito-sans'
 
 import { ThemeProvider } from "styled-components/native";
-import THEME from './src/theme';
+import THEME from './src/styles/theme';
 
-import { Home } from "./src/screens/home";
+import { Home } from "./src/screens/Home";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
