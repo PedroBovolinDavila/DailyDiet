@@ -1,4 +1,4 @@
-import { ActivityIndicator, View } from "react-native";
+import { ActivityIndicator, StatusBar, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 
 import { useFonts } from "expo-font";
@@ -9,6 +9,7 @@ import THEME from './src/styles/theme';
 
 import { Home } from "./src/screens/Home";
 import { Stats } from "./src/screens/Stats";
+import { NewMeal } from "./src/screens/NewMeal";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -26,9 +27,15 @@ export default function App() {
 
   return (
     <ThemeProvider theme={THEME}>
+      <StatusBar 
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent
+      />
+
       <SafeAreaProvider>
         <SafeAreaView style={{ flex: 1 }}>
-          <Stats />
+          <NewMeal />
         </SafeAreaView>
       </SafeAreaProvider>
     </ThemeProvider>

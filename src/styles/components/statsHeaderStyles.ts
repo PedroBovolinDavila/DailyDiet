@@ -29,4 +29,5 @@ export const BackIcon = styled(ArrowLeftSvg)`
   position: absolute;
   top: 25px;
   left: 24px;
+  fill: ${props => props.theme.colors.green700};
 `

@@ -1,17 +1,25 @@
-import styled from "styled-components/native";  
+import styled from "styled-components/native";
+import ArrowLeftSvg from '../../assets/arrowLeft.svg'
 
 export const HeaderContainer = styled.View`
   width: 100%;
-  padding: 0 24px;
-  margin-top: 35px;
   flex-direction: row;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme.colors.gray300};
+  position: relative;
+  padding: 30px 0 60px;
 `
 
-export const UserAvatar = styled.Image`
-  width: 44px;
-  height: 44px;
-  border-radius: 22px;
-  border-width: 2px;
-  border-color: ${props => props.theme.colors.gray600};
+export const HeaderTitle = styled.Text`
+  font-family: ${props => props.theme.fonts.bold};
+  font-size: ${props => props.theme.sizes.xl};
+  color: ${props => props.theme.colors.gray700};
+`
+
+export const BackIcon = styled(ArrowLeftSvg)`
+  fill: ${props => props.theme.colors.gray600};
+  position: absolute;
+  left: 24px;
+  top: 30px;
 `

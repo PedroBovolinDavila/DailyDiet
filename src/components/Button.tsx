@@ -3,12 +3,13 @@ import { ButtonContainer, ButtonText, PlusIcon } from "../styles/components/butt
 
 interface ButtonProps extends TouchableOpacityProps {
   text: string
+  showIcon?: boolean
 }
 
-export function Button({ text, ...rest }: ButtonProps) {
+export function Button({ text, showIcon = false, ...rest }: ButtonProps) {
   return (
     <ButtonContainer activeOpacity={0.8} {...rest}>
-      <PlusIcon />
+      {showIcon && <PlusIcon />}
 
       <ButtonText>
         {text}

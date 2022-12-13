@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SectionList, Text } from "react-native";
 import { Button } from "../components/Button";
-import { Header } from "../components/Header";
+import { HomeHeader } from "../components/HomeHeader";
 import { MealCard } from "../components/MealCard";
 import { PercentCard } from "../components/PercentCard";
 import { HomeContainer, HomeContent, ListTitle, SectionTitle } from "../styles/screens/homeStyles";
@@ -61,7 +61,7 @@ export function Home() {
 
   return (
     <HomeContainer>      
-      <Header />
+      <HomeHeader />
       
       <HomeContent>
         <PercentCard />
@@ -69,7 +69,7 @@ export function Home() {
         <ListTitle>
           Refeições
         </ListTitle>
-        <Button text="Nova refeição" />
+        <Button text="Nova refeição" showIcon />
 
         <SectionList 
           sections={meals}
