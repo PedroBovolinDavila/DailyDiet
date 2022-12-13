@@ -5,7 +5,7 @@ export const HeaderContainer = styled.View`
   padding: 0 24px;
   margin-top: 35px;
   flex-direction: row;
-  justify-content: space-between
+  justify-content: space-between;
 `
 
 export const UserAvatar = styled.Image`
@@ -13,5 +13,5 @@ export const UserAvatar = styled.Image`
   height: 44px;
   border-radius: 22px;
   border-width: 2px;
-  border-color: ${props => props.theme.colors.gray600}
+  border-color: ${props => props.theme.colors.gray600};
 `

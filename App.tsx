@@ -26,7 +26,7 @@ export default function App() {
   return (
     <ThemeProvider theme={THEME}>
       <SafeAreaProvider>
-        <SafeAreaView>
+        <SafeAreaView style={{ flex: 1 }}>
           <Home />
         </SafeAreaView>
       </SafeAreaProvider>

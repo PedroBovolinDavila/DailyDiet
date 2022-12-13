@@ -27,4 +27,4 @@ export default {
     '2xl': '24px',
     '3xl': '32px',
   },
-}
+} as const
