@@ -8,6 +8,7 @@ import { ThemeProvider } from "styled-components/native";
 import THEME from './src/styles/theme';
 
 import { Home } from "./src/screens/Home";
+import { Stats } from "./src/screens/Stats";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -27,7 +28,7 @@ export default function App() {
     <ThemeProvider theme={THEME}>
       <SafeAreaProvider>
         <SafeAreaView style={{ flex: 1 }}>
-          <Home />
+          <Stats />
         </SafeAreaView>
       </SafeAreaProvider>
     </ThemeProvider>
