@@ -1,8 +1,14 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 import PlusSvg from '../../assets/plus.svg'
 
-export const ButtonContainer = styled.TouchableOpacity`
-  width: 100%;
+interface ButtonContainerProps {
+  small: boolean
+}
+
+export const ButtonContainer = styled.TouchableOpacity<ButtonContainerProps>`
+  ${props => !props.small && css`
+    width: 100%;
+  `};
   align-items: center;
   justify-content: center;
   padding: 16px 24px;

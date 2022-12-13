@@ -10,6 +10,7 @@ import THEME from './src/styles/theme';
 import { Home } from "./src/screens/Home";
 import { Stats } from "./src/screens/Stats";
 import { NewMeal } from "./src/screens/NewMeal";
+import { PositiveFeedback } from "./src/screens/feedback/Positive";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -35,7 +36,7 @@ export default function App() {
 
       <SafeAreaProvider>
         <SafeAreaView style={{ flex: 1 }}>
-          <NewMeal />
+          <PositiveFeedback />
         </SafeAreaView>
       </SafeAreaProvider>
     </ThemeProvider>
