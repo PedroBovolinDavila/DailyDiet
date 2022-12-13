@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 
-export const NewMealContainer = styled.View`
+export const NewMealContainer = styled.ScrollView`
   flex: 1;
 `
 export const NewMealContent = styled.View`
@@ -30,5 +30,5 @@ export const SelectInputsContainer = styled.View`
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: auto;
+  margin-bottom: 50px;
 `
