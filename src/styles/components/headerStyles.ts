@@ -1,14 +1,25 @@
 import styled from "styled-components/native";
 import ArrowLeftSvg from '../../assets/arrowLeft.svg'
 
-export const HeaderContainer = styled.View`
+interface HeaderContainerProps {
+  variant: 'default' | 'red' | 'green'
+}
+
+export const HeaderContainer = styled.View<HeaderContainerProps>`
   width: 100%;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.theme.colors.gray300};
   position: relative;
   padding: 30px 0 60px;
+
+  background-color: ${
+    props => props.variant === 'default' 
+      ? props.theme.colors.gray300
+      : props.variant === 'red' 
+        ? props.theme.colors.red300
+        : props.theme.colors.green300
+  };
 `
 
 export const HeaderTitle = styled.Text`

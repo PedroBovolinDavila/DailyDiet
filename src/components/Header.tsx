@@ -4,16 +4,23 @@ import { BackIcon, HeaderContainer, HeaderTitle } from "../styles/components/hea
 
 interface HeaderProps {
   title: string
+  variant?: 'default' | 'red' | 'green'
 }
 
-export function Header({ title }: HeaderProps) {
+export function Header({ title, variant = 'default' }: HeaderProps) {
   const theme = useTheme()
 
   return (
-    <HeaderContainer>
+    <HeaderContainer variant={variant}>
       <StatusBar 
         barStyle="dark-content"
-        backgroundColor={theme.colors.gray300}
+        backgroundColor={
+          variant === 'default' 
+            ? theme.colors.gray300
+            : variant === 'red' 
+              ? theme.colors.red300
+              : theme.colors.green300
+        }
       />
 
       <BackIcon />

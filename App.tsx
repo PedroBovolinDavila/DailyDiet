@@ -12,6 +12,7 @@ import { Stats } from "./src/screens/Stats";
 import { NewMeal } from "./src/screens/NewMeal";
 import { PositiveFeedback } from "./src/screens/feedback/Positive";
 import { NegativeFeedback } from "./src/screens/feedback/Negative";
+import { Meal } from "./src/screens/Meal";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -37,7 +38,7 @@ export default function App() {
 
       <SafeAreaProvider>
         <SafeAreaView style={{ flex: 1 }}>
-          <NegativeFeedback />
+          <Meal />
         </SafeAreaView>
       </SafeAreaProvider>
     </ThemeProvider>
