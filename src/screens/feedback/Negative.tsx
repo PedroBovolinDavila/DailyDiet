@@ -10,7 +10,7 @@ export function NegativeFeedback() {
         Que pena!
       </FeedbackTitle>
       <FeedbackDescription>
-        Você <Bold>saiu da dieta</Bold> dessa vez, mas continue se esforçando e não desista
+        Você <Bold>saiu da dieta</Bold> dessa vez, mas continue se esforçando e não desista!
       </FeedbackDescription>
       <FeedbackImage 
         source={feedBackImage}
