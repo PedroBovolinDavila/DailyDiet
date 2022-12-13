@@ -1,16 +1,16 @@
 import { Bold, FeedbackContainer, FeedbackDescription, FeedbackImage, FeedbackTitle } from "../../styles/screens/feedbackStyles";
 
-import feedBackImage from '../../assets/positiveFeedback.png'
+import feedBackImage from '../../assets/negativeFeedback.png'
 import { Button } from "../../components/Button";
 
-export function PositiveFeedback() {
+export function NegativeFeedback() {
   return (
     <FeedbackContainer>
-      <FeedbackTitle variant="green">
-        Continue assim!
+      <FeedbackTitle variant="red">
+        Que pena!
       </FeedbackTitle>
       <FeedbackDescription>
-        Você continua <Bold>dentro da dieta</Bold>. Muito bem!
+        Você <Bold>saiu da dieta</Bold> dessa vez, mas continue se esforçando e não desista
       </FeedbackDescription>
       <FeedbackImage 
         source={feedBackImage}
