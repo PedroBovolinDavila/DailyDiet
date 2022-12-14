@@ -1,10 +1,18 @@
 import styled from "styled-components/native";
 import ArrowUpSvg from '../../assets/arrowUp.svg'
 
-export const PercentCardContainer = styled.View`
+interface PercentCardContainerProps {
+  isNegative: boolean
+}
+
+export const PercentCardContainer = styled.View<PercentCardContainerProps>`
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.theme.colors.green300};
+  background-color: ${
+    props => props.isNegative 
+      ? props.theme.colors.red300
+      : props.theme.colors.green300 
+  };
   border-radius: 8px;
   padding: 20px 16px;
   position: relative;
@@ -24,7 +32,17 @@ export const Description = styled.Text`
   color: ${props => props.theme.colors.gray600};
 `
 
-export const Icon = styled(ArrowUpSvg)``
+interface IconProps {
+  variant: 'red' | 'green'
+}
+
+export const Icon = styled(ArrowUpSvg)<IconProps>`
+  fill: ${
+    props => props.variant === 'red' 
+      ? props.theme.colors.red700
+      : props.theme.colors.green700
+  }
+`
 
 export const PercentCardBackButton = styled.TouchableOpacity`
   position: absolute;

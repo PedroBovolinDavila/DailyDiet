@@ -12,7 +12,9 @@ export function Input({
   large = false,
   twoColumns = false,
   placeholder,
-  onChangeText
+  onChangeText,
+  keyboardType,
+  value
 }: InputProps) {
   return (
     <InputContainer twoColumns={twoColumns}>
@@ -20,7 +22,14 @@ export function Input({
         {title}
       </InputTitle>
 
-      <TextInput large={large} multiline={large} placeholder={placeholder} onChangeText={onChangeText} />
+      <TextInput 
+        keyboardType={keyboardType} 
+        large={large} 
+        multiline={large} 
+        placeholder={placeholder} 
+        onChangeText={onChangeText} 
+        value={value}
+      />
     </InputContainer>
   )
 }

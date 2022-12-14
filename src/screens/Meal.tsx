@@ -5,37 +5,69 @@ import { MealContainer, MealContent, MealDescription, MealHour, MealHourTitle, M
 import PencilSvg from '../assets/pencil.svg'
 import TrashSvg from '../assets/trash.svg'
 import { Modal } from "../components/Modal";
-import { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
+import { useCallback, useState } from "react";
+import { useFocusEffect, useNavigation, useRoute } from "@react-navigation/native";
+import { getMealById, Meal as MealType } from "../storage/meals/getMealById";
+import { Alert } from "react-native";
+
+interface RouteParamsProps {
+  params: {
+    mealId: string
+    date: string
+  }
+}
 
 export function Meal() {
+  const [meal, setMeal] = useState<MealType>()
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const navigation = useNavigation()
 
+  const { params } = useRoute() as RouteParamsProps
+
+  const date = params.date.replace('.', '/').replace('.', '/')
+
   function handleOpenEditMealScreen() {
-    navigation.navigate('editMeal')
+    navigation.navigate('editMeal', params)
   }
+
+  useFocusEffect(useCallback(() => {
+    async function fetchData() {
+      const item = await getMealById(params.mealId)
+
+      if (item instanceof Error) {
+        return Alert.alert('Erro', item.message)
+      }
+
+      setMeal(item)
+    }
+
+    fetchData()
+  }, []))
 
   return (
     <MealContainer>
-      <Header title="Refeição" variant="green" />
+      <Header 
+        title="Refeição" 
+        variant={meal?.status === 'in' ? 'green' : 'red'} 
+      />
 
       <MealContent>
         <MealTitle>
-          Sanduíche
+          {meal?.title}
         </MealTitle>
         <MealDescription>
-          Sanduíche de pão integral com atum e salada de alface e tomate
+          {meal?.description}
         </MealDescription>
         <MealHourTitle>
           Data e hora
         </MealHourTitle>
         <MealHour>
-          12/12/12 às 20:00
+          {date} às {meal?.hour}
         </MealHour>
 
-        <Tag />
+        
+        <Tag status={meal?.status!} />
 
         <MealButtonsContainer>
           <Button 
@@ -58,6 +90,8 @@ export function Meal() {
       <Modal  
         isOpen={isModalOpen}
         setIsOpen={setIsModalOpen}
+        mealId={meal?.id!}
+        date={params.date}
       />
     </MealContainer>
   )

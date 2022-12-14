@@ -1,10 +1,16 @@
 import { TagContainer, TagStatus, TagTitle } from "../styles/components/tagStyles";
 
-export function Tag() {
+interface TagProps {
+  status: 'in' | 'out'
+}
+
+export function Tag({ status }: TagProps) {
   return (
     <TagContainer>
-      <TagStatus />
-      <TagTitle>dentro da dieta</TagTitle>
+      <TagStatus status={status} />
+      <TagTitle>
+        {status === 'in' ? 'dentro da dieta' : 'fora da dieta'}
+      </TagTitle>
     </TagContainer>
   )
 }

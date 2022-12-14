@@ -51,22 +51,25 @@ export async function createMeal({
       }
     )
     
-    const successSequence = status === 'in' ? prevStorage.sequence += 1 : 0
+    const sequence = status === 'in' ? prevStorage.sequence += 1 : 0
+    const success = status === 'in' ?  prevStorage.success += 1 : prevStorage.success
+    const total = prevStorage.total +=1
+
     const newStorage = prevStorage.meals 
       ? prevStorage.meals.filter(meal => meal.title !== selectedSection?.title)
       : []
 
     await AsyncStorage.setItem(MEALS_KEY, JSON.stringify({
-      sequence: successSequence,
+      sequence,
+      success,
+      total,
       meals: [
         selectedSection,
         ...newStorage
       ]
     }))
 
-  } catch (err) {
-    console.log('Err', err);
-    
+  } catch (err) {    
     return new Error('Ocorreu um erro inesperado. Tente novamente.')
   }
 }

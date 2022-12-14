@@ -15,10 +15,18 @@ export const TagTitle = styled.Text`
   color: ${props => props.theme.colors.gray700};
 `
 
-export const TagStatus = styled.View`
+interface TagStatusProps {
+  status: 'in' | 'out'
+}
+
+export const TagStatus = styled.View<TagStatusProps>`
   border-radius: 4px;
   width: 8px;
   margin-right: 8px;
   height: 8px;
-  background-color: ${props => props.theme.colors.green700};
+  background-color: ${
+    props => props.status === 'in'
+      ? props.theme.colors.green700
+      : props.theme.colors.red700
+  };
 `

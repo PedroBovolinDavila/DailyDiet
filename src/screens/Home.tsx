@@ -7,9 +7,18 @@ import { MealCard } from "../components/MealCard";
 import { PercentCard } from "../components/PercentCard";
 import { listMeals, Meal } from "../storage/meals/listMeals";
 import { HomeContainer, HomeContent, ListTitle, SectionTitle } from "../styles/screens/homeStyles";
+import { calculatePercentage } from "../utils/calculatePercentage";
+
+interface Stats {
+  percentage: string
+  total: number
+  success: number
+  sequence: number
+}
 
 export function Home() { 
   const [meals, setMeals] = useState<Meal[]>([])
+  const [stats, setStats] = useState<Stats>()
 
   const navigation = useNavigation()
 
@@ -19,16 +28,22 @@ export function Home() {
 
   useFocusEffect(useCallback(() => {
     async function fetchData() {
-      const data = await listMeals()      
-
-      console.log(data);
-      
+      const data = await listMeals()           
 
       if (data instanceof Error) {
         return
-      }
+      }      
 
       setMeals(data.meals ? data.meals : [])
+      setStats({
+        percentage: calculatePercentage({ 
+          total: data.total,
+          part: data.success
+        }),
+        total: data.total,
+        sequence: data.sequence,
+        success: data.success
+      })
     }
 
     fetchData()
@@ -44,7 +59,7 @@ export function Home() {
       />
       
       <HomeContent>
-        <PercentCard />
+        <PercentCard stats={stats!} />
 
         <ListTitle>
           Refeições
@@ -60,8 +75,8 @@ export function Home() {
             <SectionTitle>{section.title}</SectionTitle>
           )}
 
-          renderItem={({ item }) => (
-            <MealCard meal={item} />
+          renderItem={({ item, section }) => (
+            <MealCard meal={item} date={section.title} />
           )}
           
           contentContainerStyle={{

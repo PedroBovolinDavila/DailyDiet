@@ -1,12 +1,25 @@
+import { useRoute } from "@react-navigation/native";
 import { InfoCard } from "../components/InfoCard";
 import { StatCard } from "../components/StatCard";
 import { StatsHeader } from "../components/StatsHeader";
 import { InfoCardContainer, StatsContainer, StatsContent, StatsTitle } from "../styles/screens/statsStyles";
 
+interface RouteParamsProps {
+  params: {
+    percentage: string
+    sequence: number
+    total: number
+    success: number
+    fails: number
+  }
+}
+
 export function Stats() {
+  const { params } = useRoute() as RouteParamsProps
+
   return (
     <StatsContainer>
-      <StatsHeader />
+      <StatsHeader isNegative={params.fails > params.success} percentage={params.percentage} />
 
       <StatsContent>
         <StatsTitle>
@@ -14,22 +27,22 @@ export function Stats() {
         </StatsTitle>
 
         <StatCard 
-          value="22" 
+          value={params.sequence}
           description="melhor sequência de pratos na dieta" 
         />
         <StatCard 
-          value="109" 
+          value={params.total} 
           description="refeições registradas" 
         />
 
         <InfoCardContainer>
           <InfoCard 
-            value="99"
+            value={params.success}
             description="refeições dentro da dieta"
             variant="green"
           />
           <InfoCard 
-            value="10"
+            value={params.fails}
             description="refeições fora da dieta"
             variant="red"
           />

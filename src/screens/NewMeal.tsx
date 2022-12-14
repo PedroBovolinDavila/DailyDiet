@@ -20,6 +20,26 @@ export function NewMeal() {
   const navigation = useNavigation()
 
   async function handleCreateMeal() {
+    const dateRegex = /^\d{2}\/\d{2}\/\d{2}$/ ;
+    const hourRegex = /^\d{2}\:\d{2}$/; 
+
+    const isDateValid = dateRegex.test(date)
+    const isHourValid = hourRegex.test(hour)
+
+    if (!isDateValid) {
+      return Alert.alert(
+        'Informe uma data valida!', 
+        'Informe uma data no seguinte formato: dia (2 digitos) / mês (2 digitos) / ano (2 digitos).'
+      )
+    }
+
+    if (!isHourValid) {
+      return Alert.alert(
+        'Informe um horario valido!', 
+        'Informe uma data no seguinte formato: horas (2 digitos) : minutos (2 digitos)'
+      )
+    }
+
     if (!status.trim() || !title.trim() || !description.trim() || !hour.trim() || !date.trim()) {
       return Alert.alert('Informe todos os valores!', 'Informe todos os valores para poder cadastrar uma nova refeição.')
     }

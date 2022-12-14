@@ -1,7 +1,7 @@
 import { Description, StatCardContainer, Value } from "../styles/components/statCardStyles";
 
 interface StatCardProps {
-  value: string
+  value: number
   description: string
 }
 

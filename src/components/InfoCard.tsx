@@ -1,7 +1,7 @@
 import { InfoCardContainer, InfoCardDescription, InfoCardValue } from "../styles/components/infoCardStyles";
 
 interface InfoCardProps {
-  value: string
+  value: number
   description: string
   variant: 'green' | 'red'
 }

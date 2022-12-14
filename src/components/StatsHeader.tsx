@@ -3,7 +3,12 @@ import { StatusBar } from "react-native";
 import { useTheme } from "styled-components/native";
 import { BackIcon, Description, Percentage, StatsHeaderBackButton, StatsHeaderContainer } from "../styles/components/statsHeaderStyles";
 
-export function StatsHeader() {
+interface StatsHeaderProps {
+  percentage: string
+  isNegative: boolean
+}
+
+export function StatsHeader({ percentage, isNegative }: StatsHeaderProps) {
   const theme = useTheme()
 
   const navigation = useNavigation()
@@ -13,18 +18,18 @@ export function StatsHeader() {
   }
 
   return (
-    <StatsHeaderContainer>
+    <StatsHeaderContainer isNegative={isNegative}>
       <StatusBar 
         barStyle="dark-content"
-        backgroundColor={theme.colors.green300}
+        backgroundColor={isNegative ? theme.colors.red300 : theme.colors.green300}
         translucent
       />
 
       <StatsHeaderBackButton onPress={handleGoBack} activeOpacity={0.7}>
-        <BackIcon />
+        <BackIcon variant={isNegative ? 'red' : 'green'} />
       </StatsHeaderBackButton>
       <Percentage>
-        90,50%
+        {percentage}%
       </Percentage>
       <Description>
         das refeições dentro da dieta

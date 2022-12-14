@@ -1,19 +1,33 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
+import { Alert } from "react-native";
+import { removeMeal } from "../storage/meals/removeMeal";
 import { ButtonsContainer, ModalContainer, ModalContent, ModalText } from "../styles/components/modalStyles";
 import { Button } from "./Button";
 
 interface ModalProps {
   isOpen: boolean
   setIsOpen: (value: boolean) => void
+  mealId: string
+  date: string
 }
 
-export function Modal({ isOpen, setIsOpen }: ModalProps) {
+export function Modal({ isOpen, setIsOpen, mealId, date }: ModalProps) {
+  const navigation = useNavigation()
+
   function handleCancelModal() {
     setIsOpen(false)
   }
 
-  function handleRemoveMeal() {
+  async function handleRemoveMeal() {
+    await removeMeal({
+      id: mealId,
+      date
+    })
+
     setIsOpen(false)
+    Alert.alert('Sucesso!', 'Você removeu uma refeição.')
+    navigation.navigate('home')
   }
 
   return (

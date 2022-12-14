@@ -1,8 +1,16 @@
 import styled from "styled-components/native";
 import ArrowLeftSvg from '../../assets/arrowLeft.svg'
 
-export const StatsHeaderContainer = styled.View`
-  background-color: ${props => props.theme.colors.green300};
+interface StatsHeaderContainerProps {
+  isNegative: boolean
+}
+
+export const StatsHeaderContainer = styled.View<StatsHeaderContainerProps>`
+  background-color: ${
+    props => props.isNegative 
+      ? props.theme.colors.red300
+      : props.theme.colors.green300
+  };
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -24,8 +32,16 @@ export const Description = styled.Text`
   color: ${props => props.theme.colors.gray600};
 `
 
-export const BackIcon = styled(ArrowLeftSvg)`
-  fill: ${props => props.theme.colors.green700};
+interface BackIconProps {
+  variant: 'red' | 'green'
+}
+
+export const BackIcon = styled(ArrowLeftSvg)<BackIconProps>`
+  fill: ${
+    props => props.variant === 'red'
+      ? props.theme.colors.red700
+      : props.theme.colors.green700
+  };
 `
 
 export const StatsHeaderBackButton = styled.TouchableOpacity`
