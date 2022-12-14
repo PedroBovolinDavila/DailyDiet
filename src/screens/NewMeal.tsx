@@ -28,8 +28,16 @@ export function NewMeal() {
         <Input title="Descrição" large />
 
         <DateInputsContainer>
-          <Input title="Data" twoColumns />
-          <Input title="Hora" twoColumns />
+          <Input 
+            title="Data" 
+            placeholder="XX/XX/XX"
+            twoColumns 
+          />
+          <Input 
+            title="Hora" 
+            placeholder="XX:XX"
+            twoColumns 
+          />
         </DateInputsContainer>
 
         <SelectInputsTitle>
