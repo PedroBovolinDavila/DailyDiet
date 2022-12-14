@@ -7,6 +7,7 @@ export declare global {
       meal: undefined
       positiveFeedback: undefined
       negativeFeedback: undefined
+      editMeal: undefined
     }
   }
 }

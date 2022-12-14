@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { useTheme } from 'styled-components/native'
+import { EditMeal } from '../screens/EditMeal'
 import { NegativeFeedback } from '../screens/feedback/Negative'
 import { PositiveFeedback } from '../screens/feedback/Positive'
 import { Home } from '../screens/Home'
@@ -35,6 +36,10 @@ export function AppRoutes() {
       <Screen 
         name="negativeFeedback"
         component={NegativeFeedback}
+      />
+      <Screen 
+        name="editMeal"
+        component={EditMeal}
       />
     </Navigator>
   )

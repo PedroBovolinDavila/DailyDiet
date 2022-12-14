@@ -6,9 +6,16 @@ import PencilSvg from '../assets/pencil.svg'
 import TrashSvg from '../assets/trash.svg'
 import { Modal } from "../components/Modal";
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 export function Meal() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const navigation = useNavigation()
+
+  function handleOpenEditMealScreen() {
+    navigation.navigate('editMeal')
+  }
 
   return (
     <MealContainer>
@@ -34,6 +41,7 @@ export function Meal() {
           <Button 
             text="Editar refeição" 
             Icon={PencilSvg}
+            onPress={handleOpenEditMealScreen}
             showIcon
           />
           <Button 
