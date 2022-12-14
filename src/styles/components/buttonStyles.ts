@@ -1,10 +1,17 @@
+import { Dimensions } from "react-native";
 import styled, { css } from "styled-components/native";
 import PlusSvg from '../../assets/plus.svg'
 
 interface ButtonContainerProps {
   small: boolean
   outlined: boolean
+  isModalButton: boolean
 }
+
+// 12 gap => 6 px
+// 24 * 2 padding => 48 px
+
+const MODAL_BUTTON_SIZE = (Dimensions.get('screen').width / 2) - 54
 
 export const ButtonContainer = styled.TouchableOpacity<ButtonContainerProps>`
   align-items: center;
@@ -20,13 +27,14 @@ export const ButtonContainer = styled.TouchableOpacity<ButtonContainerProps>`
 
   ${props => props.outlined && css`
     border-width: 1px;
-    margin-top: 8px;
     border-color: ${props.theme.colors.gray700};
-  `}
-
+  `};
   ${props => !props.small && css`
     width: 100%;
   `};
+  ${props => props.isModalButton && css`
+    width: ${MODAL_BUTTON_SIZE}px;
+  `}
 `
 
 interface ButtonTextProps {

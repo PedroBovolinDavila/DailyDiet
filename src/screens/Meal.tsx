@@ -4,8 +4,12 @@ import { Tag } from "../components/Tag";
 import { MealContainer, MealContent, MealDescription, MealHour, MealHourTitle, MealTitle, MealButtonsContainer } from "../styles/screens/mealStyles";
 import PencilSvg from '../assets/pencil.svg'
 import TrashSvg from '../assets/trash.svg'
+import { Modal } from "../components/Modal";
+import { useState } from "react";
 
 export function Meal() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <MealContainer>
       <Header title="Refeição" variant="green" />
@@ -35,11 +39,18 @@ export function Meal() {
           <Button 
             text="Excluir refeição"
             Icon={TrashSvg}
+            onPress={() => setIsModalOpen(true)}
+            style={{ marginTop: 8 }}
             outlined
             showIcon
           />
         </MealButtonsContainer>
       </MealContent>
+
+      <Modal  
+        isOpen={isModalOpen}
+        setIsOpen={setIsModalOpen}
+      />
     </MealContainer>
   )
 }

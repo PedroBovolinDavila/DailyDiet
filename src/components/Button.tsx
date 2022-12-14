@@ -9,6 +9,7 @@ interface ButtonProps extends TouchableOpacityProps {
   small?: boolean
   Icon?: React.FC<SvgProps>
   outlined?: boolean
+  isModalButton?: boolean
 }
 
 export function Button({ 
@@ -17,10 +18,17 @@ export function Button({
   small = false, 
   Icon,
   outlined = false,
+  isModalButton = false,
   ...rest 
 }: ButtonProps) {
   return (
-    <ButtonContainer activeOpacity={0.8} small={small} outlined={outlined} {...rest}>
+    <ButtonContainer 
+      activeOpacity={0.8} 
+      small={small} 
+      outlined={outlined} 
+      isModalButton={isModalButton}
+      {...rest}
+    >
       {(showIcon && Icon) && <Icon style={{ marginRight: 12 }} />}
 
       <ButtonText outlined={outlined}>
