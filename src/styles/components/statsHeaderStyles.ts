@@ -7,8 +7,7 @@ export const StatsHeaderContainer = styled.View`
   align-items: center;
   justify-content: center;
   position: relative;
-  padding-top: 40px;
-  padding-bottom: 64px;
+  padding: 65px 0;
 `
 
 export const Percentage = styled.Text`
@@ -26,8 +25,11 @@ export const Description = styled.Text`
 `
 
 export const BackIcon = styled(ArrowLeftSvg)`
-  position: absolute;
-  top: 25px;
-  left: 24px;
   fill: ${props => props.theme.colors.green700};
+`
+
+export const StatsHeaderBackButton = styled.TouchableOpacity`
+  position: absolute;
+  top: 55px;
+  left: 24px;
 `

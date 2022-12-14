@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { Button } from "../components/Button";
 import { Header } from "../components/Header";
@@ -7,6 +8,16 @@ import { DateInputsContainer, NewMealContainer, NewMealContent, SelectInputsCont
 
 export function NewMeal() {
   const [status, setStatus] = useState('in')
+
+  const navigation = useNavigation()
+
+  function handleCreateMeal() {
+    if (status === 'in') {
+      navigation.navigate('positiveFeedback')
+    } else {
+      navigation.navigate('negativeFeedback')
+    }
+  }
 
   return (
     <NewMealContainer>
@@ -39,7 +50,7 @@ export function NewMeal() {
           />
         </SelectInputsContainer>
 
-        <Button text="Cadastrar refeição" />
+        <Button text="Cadastrar refeição" onPress={handleCreateMeal} />
       </NewMealContent>
     </NewMealContainer>
   )

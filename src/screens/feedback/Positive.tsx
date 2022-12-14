@@ -2,8 +2,15 @@ import { Bold, FeedbackContainer, FeedbackDescription, FeedbackImage, FeedbackTi
 
 import feedBackImage from '../../assets/positiveFeedback.png'
 import { Button } from "../../components/Button";
+import { useNavigation } from "@react-navigation/native";
 
 export function PositiveFeedback() {
+  const navigation = useNavigation()
+
+  function handleBackToHome() {
+    navigation.navigate('home')
+  }
+
   return (
     <FeedbackContainer>
       <FeedbackTitle variant="green">
@@ -17,6 +24,7 @@ export function PositiveFeedback() {
       />
       <Button 
         text="Ir para a página inicial"
+        onPress={handleBackToHome}
         small
       />
     </FeedbackContainer>

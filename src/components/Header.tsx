@@ -1,6 +1,7 @@
+import { useNavigation } from "@react-navigation/native"
 import { StatusBar } from "react-native"
 import { useTheme } from "styled-components/native"
-import { BackIcon, HeaderContainer, HeaderTitle } from "../styles/components/headerStyles"
+import { BackIcon, HeaderBackIcon, HeaderContainer, HeaderTitle } from "../styles/components/headerStyles"
 
 interface HeaderProps {
   title: string
@@ -9,6 +10,12 @@ interface HeaderProps {
 
 export function Header({ title, variant = 'default' }: HeaderProps) {
   const theme = useTheme()
+
+  const navigation = useNavigation()
+
+  function handleGoBack() {
+    navigation.goBack()
+  }
 
   return (
     <HeaderContainer variant={variant}>
@@ -23,7 +30,9 @@ export function Header({ title, variant = 'default' }: HeaderProps) {
         }
       />
 
-      <BackIcon />
+      <HeaderBackIcon activeOpacity={0.7} onPress={handleGoBack}>
+        <BackIcon />
+      </HeaderBackIcon>
       <HeaderTitle>
         {title}
       </HeaderTitle>

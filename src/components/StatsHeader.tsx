@@ -1,9 +1,16 @@
+import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "react-native";
 import { useTheme } from "styled-components/native";
-import { BackIcon, Description, Percentage, StatsHeaderContainer } from "../styles/components/statsHeaderStyles";
+import { BackIcon, Description, Percentage, StatsHeaderBackButton, StatsHeaderContainer } from "../styles/components/statsHeaderStyles";
 
 export function StatsHeader() {
   const theme = useTheme()
+
+  const navigation = useNavigation()
+
+  function handleGoBack() {
+    navigation.goBack()
+  }
 
   return (
     <StatsHeaderContainer>
@@ -13,7 +20,9 @@ export function StatsHeader() {
         translucent
       />
 
-      <BackIcon />
+      <StatsHeaderBackButton onPress={handleGoBack} activeOpacity={0.7}>
+        <BackIcon />
+      </StatsHeaderBackButton>
       <Percentage>
         90,50%
       </Percentage>

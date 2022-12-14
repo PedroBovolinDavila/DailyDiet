@@ -18,6 +18,7 @@ export const StatsTitle = styled.Text`
   font-size: ${props => props.theme.sizes.md};
   margin-bottom: 26px;
 `
+
 export const InfoCardContainer = styled.View`
   flex-direction: row;
   width: 100%;

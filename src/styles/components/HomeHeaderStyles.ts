@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const HomeHeaderContainer = styled.View`
   width: 100%;
-  padding: 0 24px;
+  padding: 30px 24px 0;
   margin-top: 35px;
   flex-direction: row;
   justify-content: space-between;

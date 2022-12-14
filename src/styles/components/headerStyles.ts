@@ -11,7 +11,7 @@ export const HeaderContainer = styled.View<HeaderContainerProps>`
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 30px 0 60px;
+  padding: 60px;
 
   background-color: ${
     props => props.variant === 'default' 
@@ -30,7 +30,10 @@ export const HeaderTitle = styled.Text`
 
 export const BackIcon = styled(ArrowLeftSvg)`
   fill: ${props => props.theme.colors.gray600};
+`
+
+export const HeaderBackIcon = styled.TouchableOpacity`
   position: absolute;
   left: 24px;
-  top: 30px;
+  top: 60px;
 `

@@ -24,7 +24,9 @@ export const Description = styled.Text`
   color: ${props => props.theme.colors.gray600};
 `
 
-export const Icon = styled(ArrowUpSvg)`
+export const Icon = styled(ArrowUpSvg)``
+
+export const PercentCardBackButton = styled.TouchableOpacity`
   position: absolute;
   top: 16px;
   right: 16px;

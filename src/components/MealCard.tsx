@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native"
 import { Hour, Meal, MealCardContainer, Status } from "../styles/components/mealCardStyles"
 
 interface MealCardProps {
@@ -9,8 +10,14 @@ interface MealCardProps {
 }
 
 export function MealCard({ meal }: MealCardProps) {
+  const navigation = useNavigation()
+
+  function handleOpenMealScreen() {
+    navigation.navigate('meal')
+  }
+
   return (
-    <MealCardContainer>
+    <MealCardContainer onPress={handleOpenMealScreen}>
       <Hour>
         {meal.hour}
       </Hour>

@@ -1,5 +1,6 @@
+import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
-import { SectionList, Text } from "react-native";
+import { SectionList, StatusBar, Text } from "react-native";
 import { Button } from "../components/Button";
 import { HomeHeader } from "../components/HomeHeader";
 import { MealCard } from "../components/MealCard";
@@ -59,9 +60,20 @@ export function Home() {
     }
   ])
 
+  const navigation = useNavigation()
+
+  function handleNewMeal() {
+    navigation.navigate('newMeal')
+  }
+
   return (
     <HomeContainer>      
       <HomeHeader />
+
+      <StatusBar 
+        barStyle="dark-content"
+        backgroundColor="transparent"
+      />
       
       <HomeContent>
         <PercentCard />
@@ -69,7 +81,7 @@ export function Home() {
         <ListTitle>
           Refeições
         </ListTitle>
-        <Button text="Nova refeição" showIcon />
+        <Button text="Nova refeição" onPress={handleNewMeal} showIcon />
 
         <SectionList 
           sections={meals}

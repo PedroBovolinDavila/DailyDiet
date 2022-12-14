@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 
-export const MealCardContainer = styled.View`
+export const MealCardContainer = styled.Pressable`
   width: 100%;
   flex-direction: row;
   padding: 14px 16px 12px;
