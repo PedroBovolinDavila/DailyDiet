@@ -1,17 +1,18 @@
+import { TextInputProps } from "react-native";
 import { InputContainer, InputTitle, TextInput } from "../styles/components/inputStyles";
 
-interface InputProps {
+interface InputProps extends TextInputProps {
   title: string
   large?: boolean
   twoColumns?: boolean
-  placeholder?: string
 }
 
 export function Input({ 
   title, 
   large = false,
   twoColumns = false,
-  placeholder
+  placeholder,
+  onChangeText
 }: InputProps) {
   return (
     <InputContainer twoColumns={twoColumns}>
@@ -19,7 +20,7 @@ export function Input({
         {title}
       </InputTitle>
 
-      <TextInput large={large} multiline={large} placeholder={placeholder} />
+      <TextInput large={large} multiline={large} placeholder={placeholder} onChangeText={onChangeText} />
     </InputContainer>
   )
 }

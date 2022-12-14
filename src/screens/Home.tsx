@@ -1,70 +1,38 @@
-import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { useCallback, useState } from "react";
 import { SectionList, StatusBar, Text } from "react-native";
 import { Button } from "../components/Button";
 import { HomeHeader } from "../components/HomeHeader";
 import { MealCard } from "../components/MealCard";
 import { PercentCard } from "../components/PercentCard";
+import { listMeals, Meal } from "../storage/meals/listMeals";
 import { HomeContainer, HomeContent, ListTitle, SectionTitle } from "../styles/screens/homeStyles";
 
-interface Meals {
-  title: string
-  data: {
-    hour: string
-    title: string
-    status: 'out' | 'in'
-  }[]
-}
-
 export function Home() { 
-  const [meals, setMeals] = useState<Meals[]>([
-    {
-      title: '12.08.22',
-      data: [
-        {
-          hour: '20:00',
-          title: 'X-Tudo',
-          status: 'out'
-        },
-        {
-          hour: '16:00',
-          title: 'Salada',
-          status: 'in'
-        }
-      ]
-    },
-    {
-      title: '16.08.22',
-      data: [
-        {
-          hour: '20:00',
-          title: 'X-Tudo',
-          status: 'out'
-        },
-        {
-          hour: '16:00',
-          title: 'Salada',
-          status: 'in'
-        },
-        {
-          hour: '16:00',
-          title: '22',
-          status: 'in'
-        },
-        {
-          hour: '16:00',
-          title: 'aa',
-          status: 'in'
-        }
-      ]
-    }
-  ])
+  const [meals, setMeals] = useState<Meal[]>([])
 
   const navigation = useNavigation()
 
   function handleNewMeal() {
     navigation.navigate('newMeal')
   }
+
+  useFocusEffect(useCallback(() => {
+    async function fetchData() {
+      const data = await listMeals()      
+
+      console.log(data);
+      
+
+      if (data instanceof Error) {
+        return
+      }
+
+      setMeals(data.meals ? data.meals : [])
+    }
+
+    fetchData()
+  }, []))
 
   return (
     <HomeContainer>      
